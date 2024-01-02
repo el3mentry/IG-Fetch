@@ -41,7 +41,7 @@ export default function Page(props: PropType) {
       .readText()
       .then((text) => setSourceUrl(text))
       .catch((err) =>
-        console.error("Failed to read clipboard contents: ", err)
+        console.error("Failed to read clipboard contents: ", err),
       );
   };
 

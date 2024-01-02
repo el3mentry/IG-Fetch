@@ -29,20 +29,20 @@ export default class VideoDownloader implements IVideoDownloader {
 
   private async fetchPostJson(
     postURL: IPostURL,
-    timeout?: number
+    timeout?: number,
   ): Promise<VideoInfo> {
     const postId: string = this.getPostId(postURL);
 
     if (this.downloaderService) {
       const pageJson = await this.downloaderService.fetchFromPage(
         postId,
-        timeout
+        timeout,
       );
       if (pageJson) return pageJson;
 
       const apiJson = await this.downloaderService.fetchFromGraphQL(
         postId,
-        timeout
+        timeout,
       );
       if (apiJson) return apiJson;
 
@@ -63,7 +63,7 @@ export default class VideoDownloader implements IVideoDownloader {
 
   async downloadPostVideo(
     postURL: IPostURL,
-    downloaderService: IDownloaderService
+    downloaderService: IDownloaderService,
   ): Promise<DownloadFileInfo> {
     this.downloaderService = downloaderService;
     try {

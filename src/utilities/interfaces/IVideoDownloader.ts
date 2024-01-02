@@ -5,6 +5,6 @@ import IPostURL from "./IPostURL";
 export default interface IVideoDownloader {
   downloadPostVideo(
     postURL: IPostURL,
-    downloadService: IDownloaderService
+    downloadService: IDownloaderService,
   ): Promise<DownloadFileInfo>;
 }
