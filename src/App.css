@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.App {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.App input[type="text"],
+.App button {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.App button {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.App button:hover {
+  background-color: #45a049;
+}
