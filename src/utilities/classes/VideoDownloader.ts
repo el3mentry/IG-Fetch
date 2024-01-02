@@ -26,7 +26,7 @@ export default class VideoDownloader implements IVideoDownloader {
 
   private async fetchPostJson(
     postURL: IPostURL,
-    timeout?: number
+    timeout?: number,
   ): Promise<VideoInfo> {
     const postId = this.getPostId(postURL);
 

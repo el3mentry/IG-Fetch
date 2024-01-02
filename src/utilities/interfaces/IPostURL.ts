@@ -1,3 +1,3 @@
 export default interface IPostURL {
-    url: string;
+  url: string;
 }
