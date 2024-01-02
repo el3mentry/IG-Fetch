@@ -50,13 +50,6 @@ export default class VideoDownloader implements IVideoDownloader {
     } else {
       throw new Error("downloader service not initialized.");
     }
-
-    return {
-      filename: "",
-      width: "",
-      height: "",
-      videoUrl: "",
-    };
   }
 
   private async fetchVideoInfoAction(postURL: IPostURL): Promise<VideoInfo> {
