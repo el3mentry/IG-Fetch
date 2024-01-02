@@ -1,17 +1,32 @@
 import React, { useState } from "react";
-import PostURL from "../utilities/PostURL";
+import PostURL from "../utilities/classes/PostURL";
+import IVideoDownloader from "../utilities/interfaces/IVideoDownloader";
+import IFormValidator from "../utilities/interfaces/IFormValidator";
 
-export default function Page({ videoDownloader }) {
+type PropType = {
+  videoDownloader: IVideoDownloader;
+  formValidator: IFormValidator;
+};
+
+export default function Page(props: PropType) {
+  const { videoDownloader, formValidator } = props;
+
   const [sourceURL, setSourceURL] = useState("");
   const [webhookURL, setWebhookURL] = useState("");
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     let postURL = new PostURL(sourceURL);
 
+    const inputError = formValidator.isValidFormInput(postURL);
+
+    if (inputError) {
+      throw new Error(inputError);
+    }
+
     try {
       await videoDownloader.downloadPostVideo(postURL);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.message);
     }
   }
