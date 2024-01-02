@@ -1,8 +1,11 @@
 import IVideoDownloader from "../interfaces/IVideoDownloader";
 import IPostURL from "../interfaces/IPostURL";
 import { DownloadFileInfo, VideoInfo } from "../types";
+import IDownloaderService from "../interfaces/IDownloaderService";
 
 export default class VideoDownloader implements IVideoDownloader {
+  downloaderService: IDownloaderService | null = null;
+
   getPostId = (postUrl: IPostURL): string => {
     let postId: string | undefined = "";
 
@@ -11,12 +14,12 @@ export default class VideoDownloader implements IVideoDownloader {
     const reelRegex =
       /^https:\/\/(?:www\.)?instagram\.com\/reels?\/([a-zA-Z0-9_-]+)\/?/;
 
-    const postCheck = postUrl.url.match(postRegex);
+    const postCheck: RegExpMatchArray | null = postUrl.url.match(postRegex);
     if (postCheck) {
       postId = postCheck.at(-1);
     }
 
-    const reelCheck = postUrl.url.match(reelRegex);
+    const reelCheck: RegExpMatchArray | null = postUrl.url.match(reelRegex);
     if (reelCheck) {
       postId = reelCheck.at(-1);
     }
@@ -26,16 +29,27 @@ export default class VideoDownloader implements IVideoDownloader {
 
   private async fetchPostJson(
     postURL: IPostURL,
-    timeout?: number,
+    timeout?: number
   ): Promise<VideoInfo> {
-    const postId = this.getPostId(postURL);
+    const postId: string = this.getPostId(postURL);
 
-    // const pageJson = await fetchFromPage(postId, timeout);
-    // if (pageJson) return pageJson;
+    if (this.downloaderService) {
+      const pageJson = await this.downloaderService.fetchFromPage(
+        postId,
+        timeout
+      );
+      if (pageJson) return pageJson;
 
-    // const apiJson = await fetchFromGraphQL(postId, timeout);
-    // if (apiJson) return apiJson;
-    // throw new Error("Video link for this post is not public.");
+      const apiJson = await this.downloaderService.fetchFromGraphQL(
+        postId,
+        timeout
+      );
+      if (apiJson) return apiJson;
+
+      throw new Error("Video link for this post is not public.");
+    } else {
+      throw new Error("downloader service not initialized.");
+    }
 
     return {
       filename: "",
@@ -54,10 +68,14 @@ export default class VideoDownloader implements IVideoDownloader {
     }
   }
 
-  async downloadPostVideo(postURL: IPostURL): Promise<DownloadFileInfo> {
+  async downloadPostVideo(
+    postURL: IPostURL,
+    downloaderService: IDownloaderService
+  ): Promise<DownloadFileInfo> {
+    this.downloaderService = downloaderService;
     try {
       let response: VideoInfo = await this.fetchVideoInfoAction(postURL);
-      const { filename, videoUrl } = response; // need to fix!!!!!!
+      const { filename, videoUrl } = response;
       return { fileName: filename, videoURL: videoUrl };
     } catch (e: any) {
       throw new Error(e.message);
