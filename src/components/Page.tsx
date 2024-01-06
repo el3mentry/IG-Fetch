@@ -30,7 +30,11 @@ export default function Page(props: PropType) {
     }
 
     try {
-      await postDownloader.downloadPostVideo(postURL, downloaderService);
+      let fileInfo = await postDownloader.downloadPostVideo(
+        postURL,
+        downloaderService
+      );
+      console.log(fileInfo);
     } catch (error: any) {
       console.log(error.message);
     }
@@ -41,7 +45,7 @@ export default function Page(props: PropType) {
       .readText()
       .then((text) => setSourceUrl(text))
       .catch((err) =>
-        console.error("Failed to read clipboard contents: ", err),
+        console.error("Failed to read clipboard contents: ", err)
       );
   };
 

@@ -1,6 +1,6 @@
 import IDownloaderService from "../interfaces/IDownloaderService";
 import { HEADERS_FOR_GENERIC_PAGE, HEADERS_FOR_GRAPHQL } from "../constants";
-import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
+import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { load, CheerioAPI } from "cheerio";
 import { GraphQLResponse, VideoInfo } from "../types";
 
@@ -37,22 +37,12 @@ class FetcherFromPage {
 
   private async makeHttpRequest({
     ...args
-  }: AxiosRequestConfig): Promise<AxiosResponse> {
+  }: AxiosRequestConfig): Promise<AxiosResponse | null> {
     try {
       const response: AxiosResponse = await axios(args);
       return response;
     } catch (error: any) {
-      const axiosError: AxiosError = error;
-      if (axiosError.response) {
-        console.error("Axios Error:", axiosError.message);
-        throw new Error(axiosError.message);
-      } else if (axiosError.request) {
-        console.error("Request Error:", axiosError.request);
-        throw new Error("Timeout exceeded.");
-      } else {
-        console.error("Server Error:", axiosError.message);
-        throw new Error("Something went wrong, please try again.");
-      }
+      return null;
     }
   }
 
@@ -71,11 +61,7 @@ class FetcherFromPage {
       throw new Error(e.message);
     }
 
-    if (response.statusText === "error") {
-      return null;
-    }
-
-    if (!response.data) return null;
+    if (!response) return null;
 
     const postHtml = load(response.data);
     const videoElement = postHtml("meta[property='og:video']");
@@ -137,22 +123,12 @@ class FetcherFromGraphQL {
 
   private async makeHttpRequest({
     ...args
-  }: AxiosRequestConfig): Promise<AxiosResponse> {
+  }: AxiosRequestConfig): Promise<AxiosResponse | null> {
     try {
       const response: AxiosResponse = await axios(args);
       return response;
     } catch (error: any) {
-      const axiosError: AxiosError = error;
-      if (axiosError.response) {
-        console.error("Axios Error:", axiosError.message);
-        throw new Error(axiosError.message);
-      } else if (axiosError.request) {
-        console.error("Request Error:", axiosError.request);
-        throw new Error("Timeout exceeded.");
-      } else {
-        console.error("Server Error:", axiosError.message);
-        throw new Error("Something went wrong, please try again.");
-      }
+      return null;
     }
   }
 
@@ -202,20 +178,15 @@ class FetcherFromGraphQL {
         data: encodedData,
         timeout,
       });
-      if (response.statusText === "error") {
-        return null;
-      }
     } catch (e: any) {
-      throw new Error(e.message);
+      console.log(e.message);
     }
 
-    if (response.statusText === "error") return null;
-
-    const contentType = response.headers["content-type"];
+    const contentType = (response as AxiosResponse).headers["content-type"];
 
     if (contentType !== "text/javascript; charset=utf-8") return null;
 
-    const responseJson: GraphQLResponse = response.data;
+    const responseJson: GraphQLResponse = (response as AxiosResponse).data;
     if (!responseJson.data) return null;
 
     const formattedJson = this.formatGraphqlJson(responseJson);
@@ -230,8 +201,10 @@ export default class DownloaderService implements IDownloaderService {
   ): Promise<VideoInfo | null> {
     const fetcherFromPage: FetcherFromPage = new FetcherFromPage();
 
-    let videoInfo: VideoInfo | null =
-      await fetcherFromPage.fetchFromPage(postId, timeout);
+    let videoInfo: VideoInfo | null = await fetcherFromPage.fetchFromPage(
+      postId,
+      timeout
+    );
 
     return videoInfo;
   }
