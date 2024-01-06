@@ -1,9 +1,9 @@
-import IVideoDownloader from "../interfaces/IVideoDownloader";
+import IPostDownloader from "../interfaces/IPostDownloader";
 import IPostURL from "../interfaces/IPostURL";
 import { DownloadFileInfo, VideoInfo } from "../types";
 import IDownloaderService from "../interfaces/IDownloaderService";
 
-export default class VideoDownloader implements IVideoDownloader {
+export default class PostDownloader implements IPostDownloader {
   downloaderService: IDownloaderService | null = null;
 
   getPostId = (postUrl: IPostURL): string => {

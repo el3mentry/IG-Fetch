@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import PostURL from "../utilities/classes/PostURL";
-import IVideoDownloader from "../utilities/interfaces/IVideoDownloader";
+import IPostDownloader from "../utilities/interfaces/IPostDownloader";
 import IFormValidator from "../utilities/interfaces/IFormValidator";
 import IDownloaderService from "../utilities/interfaces/IDownloaderService";
 
 type PropType = {
-  videoDownloader: IVideoDownloader;
+  postDownloader: IPostDownloader;
   formValidator: IFormValidator;
   downloaderService: IDownloaderService;
 };
 
 export default function Page(props: PropType) {
-  const { videoDownloader, formValidator, downloaderService } = props;
+  const { postDownloader, formValidator, downloaderService } = props;
 
   const [sourceUrl, setSourceUrl] = useState("");
   const [webhookUrl, setWebhookUrl] = useState("");
@@ -30,7 +30,7 @@ export default function Page(props: PropType) {
     }
 
     try {
-      await videoDownloader.downloadPostVideo(postURL, downloaderService);
+      await postDownloader.downloadPostVideo(postURL, downloaderService);
     } catch (error: any) {
       console.log(error.message);
     }
