@@ -2,7 +2,6 @@ import IDownloaderService from "../interfaces/IDownloaderService";
 import { HEADERS_FOR_GENERIC_PAGE, HEADERS_FOR_GRAPHQL } from "../constants";
 import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
 import { load, CheerioAPI } from "cheerio";
-import querystring from "querystring";
 import { GraphQLResponse, VideoInfo } from "../types";
 
 class FetcherFromPage {
@@ -132,7 +131,7 @@ class FetcherFromGraphQL {
       server_timestamps: "true",
       doc_id: "10015901848480474",
     };
-    const encoded = querystring.stringify(requestData);
+    const encoded = new URLSearchParams(requestData).toString();
     return encoded;
   }
 
