@@ -11,7 +11,7 @@ export const HEADERS_FOR_GENERIC_PAGE = {
 };
 
 export const HEADERS_FOR_GRAPHQL = {
-  "Accept": "*/*",
+  Accept: "*/*",
   "Accept-Language": "en-US,en;q=0.5",
   "Content-Type": "application/x-www-form-urlencoded",
   "X-FB-Friendly-Name": "PolarisPostActionLoadPostQueryQuery",
