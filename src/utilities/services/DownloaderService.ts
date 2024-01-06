@@ -225,10 +225,26 @@ class FetcherFromGraphQL {
 }
 
 export default class DownloaderService implements IDownloaderService {
-  async fetchFromPage(postURL: string, timeout?: number): Promise<any> {
-    throw new Error("Method not implemented.");
+  async fetchFromPage(
+    postId: string,
+    timeout?: number
+  ): Promise<VideoInfo | null> {
+    const fetcherFromPage: FetcherFromPage = new FetcherFromPage();
+
+    let videoInfo: VideoInfo | null =
+      await fetcherFromPage.fetchFromPage(postId, timeout);
+
+    return videoInfo;
   }
-  async fetchFromGraphQL(postURL: string, timeout?: number): Promise<any> {
-    throw new Error("Method not implemented.");
+  async fetchFromGraphQL(
+    postId: string,
+    timeout?: number
+  ): Promise<VideoInfo | null> {
+    const fetcherFromGraphQL: FetcherFromGraphQL = new FetcherFromGraphQL();
+
+    let videoInfo: VideoInfo | null =
+      await fetcherFromGraphQL.fetchUsingGraphQL(postId, timeout);
+
+    return videoInfo;
   }
 }

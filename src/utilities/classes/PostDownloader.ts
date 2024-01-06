@@ -54,7 +54,7 @@ export default class PostDownloader implements IPostDownloader {
 
   private async fetchVideoInfoAction(postURL: IPostURL): Promise<VideoInfo> {
     try {
-      const videoInfo = await this.fetchPostJson(postURL);
+      const videoInfo = await this.fetchPostJson(postURL, 0);  // timeout = 0 --> no timeout.
       return videoInfo;
     } catch (error: any) {
       throw new Error(error.message);
