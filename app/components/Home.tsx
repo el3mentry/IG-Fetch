@@ -5,21 +5,22 @@ import PostURL from "../utils/classes/PostURL";
 import IPostDownloader from "../utils/interfaces/IPostDownloader";
 import IFormValidator from "../utils/interfaces/IFormValidator";
 import IDownloaderService from "../utils/interfaces/IDownloaderService";
+import PostDownloader from "../utils/classes/PostDownloader";
+import FormValidator from "../utils/classes/FormValidator";
+import serviceExporter from "../utils/actions/serviceExporter";
+import DownloaderService from "../lib/services/DownloaderService";
 
-type PropType = {
-  postDownloader: IPostDownloader;
-  formValidator: IFormValidator;
-  downloaderService: IDownloaderService;
-};
-
-export default function Home(props: PropType) {
-  const { postDownloader, formValidator, downloaderService } = props;
-
+export default function Home() {
   const [sourceUrl, setSourceUrl] = useState("");
   const [webhookUrl, setWebhookUrl] = useState("");
   const [fileName, setFileName] = useState("");
   const [autoSave, setAutoSave] = useState(false);
   const [videoPlayer, setVideoPlayer] = useState(null);
+  
+  const postDownloader: IPostDownloader = new PostDownloader();
+  const formValidator: IFormValidator = new FormValidator();
+  const downloaderService: Promise<IDownloaderService> =
+    serviceExporter(DownloaderService);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -34,7 +35,7 @@ export default function Home(props: PropType) {
     try {
       let fileInfo = await postDownloader.downloadPostVideo(
         postURL,
-        downloaderService
+        await downloaderService
       );
       console.log(fileInfo);
     } catch (error: any) {
