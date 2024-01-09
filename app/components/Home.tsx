@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState } from "react";
-import PostURL from "../utilities/classes/PostURL";
-import IPostDownloader from "../utilities/interfaces/IPostDownloader";
-import IFormValidator from "../utilities/interfaces/IFormValidator";
-import IDownloaderService from "../utilities/interfaces/IDownloaderService";
+import PostURL from "../utils/classes/PostURL";
+import IPostDownloader from "../utils/interfaces/IPostDownloader";
+import IFormValidator from "../utils/interfaces/IFormValidator";
+import IDownloaderService from "../utils/interfaces/IDownloaderService";
 
 type PropType = {
   postDownloader: IPostDownloader;
@@ -10,7 +12,7 @@ type PropType = {
   downloaderService: IDownloaderService;
 };
 
-export default function Page(props: PropType) {
+export default function Home(props: PropType) {
   const { postDownloader, formValidator, downloaderService } = props;
 
   const [sourceUrl, setSourceUrl] = useState("");
