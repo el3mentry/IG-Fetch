@@ -26,9 +26,9 @@ export async function GET(req: Request) {
       downloaderService
     );
 
-    NextResponse.json({ hello: "Hello" });
+    return NextResponse.json({ hello: "Hello" });
   } catch (error) {
     console.error(error);
-    NextResponse.json({ error: "Failed to scrape data" });
+    return NextResponse.json({ error: "Failed to scrape data" });
   }
 }
