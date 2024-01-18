@@ -1,8 +1,8 @@
-import IDownloaderService from "../interfaces/IDownloaderService";
-import { HEADERS_FOR_GENERIC_PAGE, HEADERS_FOR_GRAPHQL } from "../constants";
+import IDownloaderService from "../../utils/interfaces/IDownloaderService";
+import { HEADERS_FOR_GENERIC_PAGE, HEADERS_FOR_GRAPHQL } from "../../utils/constants";
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { load, CheerioAPI } from "cheerio";
-import { GraphQLResponse, VideoInfo } from "../types";
+import { GraphQLResponse, VideoInfo } from "../../utils/types";
 
 class FetcherFromPage {
   private getIGVideoFileName() {
