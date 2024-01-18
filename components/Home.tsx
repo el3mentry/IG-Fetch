@@ -1,15 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import "../../styles/globals.css";
+import "../styles/globals.css";
 import PostURL from "../utils/classes/PostURL";
-import IPostDownloader from "../utils/interfaces/IPostDownloader";
 import IFormValidator from "../utils/interfaces/IFormValidator";
-import IDownloaderService from "../utils/interfaces/IDownloaderService";
-import PostDownloader from "../utils/classes/PostDownloader";
 import FormValidator from "../utils/classes/FormValidator";
-import serviceExporter from "../utils/actions/serviceExporter";
-import DownloaderService from "../lib/services/DownloaderService";
+import { VIDEO_API_URL } from "../utils/constants";
 
 export default function Home() {
   const [sourceUrl, setSourceUrl] = useState("");
@@ -18,15 +14,11 @@ export default function Home() {
   const [autoSave, setAutoSave] = useState(false);
   const [videoPlayer, setVideoPlayer] = useState(null);
 
-  const postDownloader: IPostDownloader = new PostDownloader();
   const formValidator: IFormValidator = new FormValidator();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     let postURL = new PostURL(sourceUrl);
-    const downloaderService: IDownloaderService = await serviceExporter(
-      DownloaderService
-    );
 
     const inputError = formValidator.isValidFormInput(postURL);
 
@@ -35,11 +27,9 @@ export default function Home() {
     }
 
     try {
-      let fileInfo = await postDownloader.downloadPostVideo(
-        postURL,
-        downloaderService
-      );
-      console.log(fileInfo);
+      const response = await fetch(VIDEO_API_URL + "?url=" + postURL.url);
+      const scrapedData = await response.json();
+      console.log(scrapedData);
     } catch (error: any) {
       console.log(error.message);
     }
