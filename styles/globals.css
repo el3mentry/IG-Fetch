@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(to bottom right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5) fixed;
+  background: linear-gradient(108deg, rgba(254, 218, 117, 0.30) 5.21%, rgba(250, 126, 30, 0.30) 28.65%, rgba(214, 41, 118, 0.30) 52.6%, rgba(150, 47, 191, 0.30) 73.44%, rgba(79, 91, 213, 0.30) 95.31%);
   display: flex;
   justify-content: center;
   align-items: center;
