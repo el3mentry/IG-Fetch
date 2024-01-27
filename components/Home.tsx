@@ -6,6 +6,8 @@ import PostURL from "../utils/classes/PostURL";
 import IFormValidator from "../utils/interfaces/IFormValidator";
 import FormValidator from "../utils/classes/FormValidator";
 import { VIDEO_API_URL } from "../utils/constants";
+import LeftSection from "./LeftSection";
+import RightSection from "./RightSection";
 
 export default function Home() {
   const [sourceUrl, setSourceUrl] = useState("");
@@ -70,53 +72,9 @@ export default function Home() {
 
   return (
     <div className="container">
+      <LeftSection />
 
-      <div className="box">
-        <input type="text" placeholder="reels url" className="field" />
-        <button className="button" type="button">
-          Clear
-        </button>
-        <button className="button" type="button">
-          Copy
-        </button>
-      </div>
-
-      <div className="box">
-        <input type="text" placeholder="name of file" className="field" />
-        <button className="button" type="button">
-          Save
-        </button>
-        <button className="button" type="button">
-          Save as
-        </button>
-      </div>
-
-      <div className="box">
-        <input
-          type="text"
-          placeholder="discord channel webhook url"
-          className="field"
-        />
-        <button className="button" type="button">
-          Push
-        </button>
-      </div>
-
-      <div className="box">
-        <input type="text" placeholder="source url" className="field" />
-        <label className="switch">
-          <input type="checkbox" title="switch" />
-          <span className="slider round"></span>
-        </label>
-        <p>Autoplay media from source</p>
-      </div>
-
-      <div className="box align-items-center no-background">
-        <button className="button" type="button">
-          Compress video
-        </button>
-      </div>
-      
+      <RightSection />
     </div>
   );
 }
