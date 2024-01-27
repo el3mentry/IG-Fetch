@@ -49,7 +49,11 @@ export default function Home() {
   };
 
   const handleSave = () => {
-    // Implement your save functionality here
+    throw new Error("Not implemented yet.");
+  };
+
+  const handleSaveAs = () => {
+    throw new Error("Not implemented yet.");
   };
 
   const handleToggle = () => {
@@ -57,7 +61,7 @@ export default function Home() {
   };
 
   const handlePlay = () => {
-    // Implement your play functionality here
+    throw new Error("Not implemented yet.");
   };
 
   const handleClose = () => {
@@ -65,58 +69,54 @@ export default function Home() {
   };
 
   return (
-    <div className="App">
-      <h2>Video Fetcher</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Video Source URL:
-          <input
-            type="text"
-            value={sourceUrl}
-            onChange={(e) => setSourceUrl(e.target.value)}
-            required
-          />
-          <button type="button" onClick={handlePaste}>
-            Paste
-          </button>
-          <button type="button" onClick={handleClear}>
-            Clear
-          </button>
-          <button type="button" onClick={handleSave}>
-            Save
-          </button>
+    <div className="container">
+
+      <div className="box">
+        <input type="text" placeholder="reels url" className="field" />
+        <button className="button" type="button">
+          Clear
+        </button>
+        <button className="button" type="button">
+          Copy
+        </button>
+      </div>
+
+      <div className="box">
+        <input type="text" placeholder="name of file" className="field" />
+        <button className="button" type="button">
+          Save
+        </button>
+        <button className="button" type="button">
+          Save as
+        </button>
+      </div>
+
+      <div className="box">
+        <input
+          type="text"
+          placeholder="discord channel webhook url"
+          className="field"
+        />
+        <button className="button" type="button">
+          Push
+        </button>
+      </div>
+
+      <div className="box">
+        <input type="text" placeholder="source url" className="field" />
+        <label className="switch">
+          <input type="checkbox" title="switch" />
+          <span className="slider round"></span>
         </label>
-        <label>
-          Auto-save:
-          <input type="checkbox" checked={autoSave} onChange={handleToggle} />
-        </label>
-        {videoPlayer && (
-          <div>
-            <video src={videoPlayer} controls />
-            <button type="button" onClick={handleClose}>
-              Close Video
-            </button>
-          </div>
-        )}
-        <label>
-          File Name:
-          <input
-            type="text"
-            value={fileName}
-            onChange={(e) => setFileName(e.target.value)}
-          />
-        </label>
-        <label>
-          Discord Webhook URL:
-          <input
-            type="text"
-            value={webhookUrl}
-            onChange={(e) => setWebhookUrl(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Post to Discord</button>
-      </form>
+        <p>Autoplay media from source</p>
+      </div>
+
+      <div className="box align-items-center no-background">
+        <button className="button" type="button">
+          Compress video
+        </button>
+      </div>
+      
     </div>
   );
 }
