@@ -1,17 +1,56 @@
 import Clear from "../../icons/Clear.svg";
 import Paste from "../../icons/Paste.svg";
+import React, { useEffect } from "react";
 
 import Image from "next/image";
 
-export default function LeftSection() {
+interface InputProps {
+  sourceUrl: string;
+  setSourceUrl: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
+  function handlePaste() {
+    navigator.clipboard.readText().then((cliptext) => setSourceUrl(cliptext));
+  } 
+
+  function handleClear() {
+    setSourceUrl("");
+  }
+
   return (
     <div className="left-section">
       <div className="box field-color rounded-border-18 ml-0 mr-0">
-        <input type="text" placeholder="reels url" className="field no-background no-outline" />
-        <div className="flex flex-direction-row justify-content-space-between clear-paste">
-            <Image priority src={Paste} alt="Paste" height={16} title="Paste" />
-            <Image priority src={Clear} alt="Clear" height={16} title="Clear"/>
-        </div>
+        <input
+          type="text"
+          id="reels-url-field"
+          placeholder="reels url"
+          className="field no-background no-outline"
+          value={sourceUrl}
+          onChange={(e) => setSourceUrl(e.target.value)}
+        />
+
+        <Image
+          priority
+          src={Paste}
+          alt="Paste"
+          height={16}
+          title="Paste"
+          id="Paste"
+          role="button"
+          onClick={handlePaste}
+        />
+        <Image
+          priority
+          src={Clear}
+          alt="Clear"
+          height={16}
+          title="Clear"
+          id="Clear"
+          className="ml-6"
+          onClick={handleClear}
+          role="button"
+        />
       </div>
 
       <div className="box">

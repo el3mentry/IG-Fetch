@@ -72,7 +72,7 @@ export default function Home() {
 
   return (
     <div className="container">
-      <LeftSection />
+      <LeftSection sourceUrl={sourceUrl} setSourceUrl={setSourceUrl} />
 
       <RightSection />
     </div>

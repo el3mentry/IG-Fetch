@@ -39,6 +39,18 @@ body {
   width: 100%;
 }
 
+.ml-6 {
+  margin-left: 6px;
+}
+
+#Paste:hover {
+  cursor: pointer;
+}
+
+#Clear:hover {
+  cursor: pointer;
+}
+
 .ml-0 {
   margin-left: 0;
 }
