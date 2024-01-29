@@ -71,10 +71,11 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
-      <LeftSection sourceUrl={sourceUrl} setSourceUrl={setSourceUrl} />
-
-      <RightSection />
+    <div className="container m-auto">
+      <div className="flex">
+        <LeftSection sourceUrl={sourceUrl} setSourceUrl={setSourceUrl} />
+        <RightSection />
+      </div>
     </div>
   );
 }
