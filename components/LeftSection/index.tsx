@@ -20,12 +20,12 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
 
   return (
     <div className="left-section">
-      <div className="box field-color rounded-border-18 ml-0 mr-0">
+      <div className="box field-color rounded-border-18 ml-0 mr-0 bg-blue-800">
         <input
           type="text"
           id="reels-url-field"
           placeholder="reels url"
-          className="field no-background no-outline"
+          className="field no-background no-outline "
           value={sourceUrl}
           onChange={(e) => setSourceUrl(e.target.value)}
         />
