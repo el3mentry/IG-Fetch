@@ -133,6 +133,14 @@ body {
   margin-right: 10px;
 }
 
+.pl-0 {
+  padding-left: 0;
+}
+
+.pr-0 {
+  padding-right: 0;
+}
+
 .align-items-center {
   align-items: center;
 }

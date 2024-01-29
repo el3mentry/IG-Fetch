@@ -53,7 +53,7 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
         />
       </div>
 
-      <div className="box">
+      <div className="box ml-0 mr-0 pl-0 pr-0" id="fileName">
         <input
           type="text"
           placeholder="name of file"
@@ -67,7 +67,7 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
         </button>
       </div>
 
-      <div className="box">
+      <div className="box ml-0 mr-0 pl-0 pr-0">
         <input
           type="text"
           placeholder="discord channel webhook url"
@@ -80,7 +80,7 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
 
       <div className="box"></div>
 
-      <div className="box align-items-center no-background">
+      <div className="box align-items-center no-background ml-0 mr-0 pl-0 pr-0">
         <button className="button rounded-border-18" type="button">
           Compress video
         </button>
