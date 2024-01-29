@@ -79,12 +79,6 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
       </div>
 
       <div className="box"></div>
-
-      <div className="box align-items-center no-background ml-0 mr-0 pl-0 pr-0">
-        <button className="button rounded-border-18" type="button">
-          Compress video
-        </button>
-      </div>
     </div>
   );
 }

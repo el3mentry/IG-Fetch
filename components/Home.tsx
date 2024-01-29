@@ -71,11 +71,19 @@ export default function Home() {
   };
 
   return (
-    <div className="container m-auto">
-      <div className="flex">
+    <div className="flex h-[100vh] w-[100%] flex-col items-center justify-evenly">
+
+      <div className="flex w-[100%] flex-row max-w-[1980px] items-center justify-center">
         <LeftSection sourceUrl={sourceUrl} setSourceUrl={setSourceUrl} />
         <RightSection />
       </div>
+
+      <div className="no-background ml-0 mr-0 pl-0 pr-0">
+        <button className="button rounded-border-18" type="button">
+          Compress video
+        </button>
+      </div>
+
     </div>
   );
 }
