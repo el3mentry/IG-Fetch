@@ -20,12 +20,12 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
 
   return (
     <div className="left-section w-[100%] sm:w-[100%] lg:w-[70%] flex-shrink flex-grow">
-      <div className="box field-color rounded-border-18 ml-0 mr-0 bg-blue-800 ">
+      <div className="box field-color rounded-border-18 mx-0 bg-blue-800 my-6 p-2">
         <input
           type="text"
           id="reels-url-field"
           placeholder="reels url"
-          className="field no-background no-outline "
+          className="field no-background no-outline"
           value={sourceUrl}
           onChange={(e) => setSourceUrl(e.target.value)}
         />
@@ -47,33 +47,33 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
           height={16}
           title="Clear"
           id="Clear"
-          className="ml-6"
+          className="mx-3"
           onClick={handleClear}
           role="button"
         />
       </div>
 
-      <div className="box ml-0 mr-0 pl-0 pr-0" id="fileName">
+      <div className="box mx-0 my-3" id="fileName">
         <input
           type="text"
           placeholder="name of file"
           className="field rounded-border-18"
         />
-        <button className="button rounded-border-18" type="button">
+        <button className="button rounded-full mx-2 w-24" type="button">
           Save
         </button>
-        <button className="button rounded-border-18" type="button">
+        <button className="button rounded-full w-44" type="button">
           Save as
         </button>
       </div>
 
-      <div className="box ml-0 mr-0 pl-0 pr-0">
+      <div className="box mx-0 px-0 my-3">
         <input
           type="text"
           placeholder="discord channel webhook url"
           className="field rounded-border-18"
         />
-        <button className="button rounded-border-18" type="button">
+        <button className="button rounded-full ml-2 w-24" type="button">
           Push
         </button>
       </div>
