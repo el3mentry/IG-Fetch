@@ -19,7 +19,7 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
   }
 
   return (
-    <div className="left-section w-[100%] sm:w-[100%] lg:w-[70%] flex-shrink flex-grow">
+    <div className="left-section w-[100%] sm:w-[100%] lg:w-[70%] flex-shrink flex-grow lg:px-32">
       <div className="box field-color rounded-border-18 mx-0 bg-blue-800 my-6 p-2">
         <input
           type="text"
