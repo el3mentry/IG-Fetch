@@ -19,8 +19,8 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
   }
 
   return (
-    <div className="left-section">
-      <div className="box field-color rounded-border-18 ml-0 mr-0 bg-blue-800">
+    <div className="left-section w-[100%] sm:w-[100%] lg:w-[70%] flex-shrink flex-grow">
+      <div className="box field-color rounded-border-18 ml-0 mr-0 bg-blue-800 ">
         <input
           type="text"
           id="reels-url-field"
