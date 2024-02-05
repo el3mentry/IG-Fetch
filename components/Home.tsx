@@ -71,8 +71,8 @@ export default function Home() {
   };
 
   return (
-    <div className="container sm:p-4 lg:p-2 m-auto flex w-[100%] h-[100%] flex-col items-center justify-evenly flex-shrink flex-grow bg-transparent">
-      <div className="flex w-[100%] flex-row max-w-[1980px] items-center justify-center flex-wrap p-4 m-auto flex-shrink flex-grow">
+    <div className="sm:p-4 lg:p-2 flex w-[100%] h-[100%] flex-col items-center justify-evenly flex-shrink flex-grow bg-transparent">
+      <div className="flex w-[100%] flex-row max-w-[1980px] items-center justify-center flex-wrap p-4 flex-shrink flex-grow">
         <LeftSection sourceUrl={sourceUrl} setSourceUrl={setSourceUrl} />
         <RightSection />
       </div>
