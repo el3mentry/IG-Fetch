@@ -54,11 +54,6 @@ body {
   justify-content: space-between;
 }
 
-.right-section {
-  display: flex;
-  flex-direction: column;
-}
-
 .field {
   width: 100%;
   padding: 10px;

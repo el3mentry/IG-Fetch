@@ -4,10 +4,14 @@ import SourceURL from "./SourceURL";
 
 export default function RightSection() {
   return (
-    <div className="right-section w-[100%] sm:w-[100%] lg:w-[30%] flex-shrink flex-grow">
-      <SourceURL />
-      <PlayableMedia />
-      <AutoplayToggle />
+    <div className="flex flex-row w-[100%] sm:w-[100%] lg:w-[20%] flex-shrink flex-grow">
+      <div className="flex flex-col">
+        <SourceURL />
+        <PlayableMedia />
+        {/* <AutoplayToggle /> */}
+      </div>
+      <div className="w-0 sm:w-0 lg:w-[10%]">
+      </div>
     </div>
   );
 }
