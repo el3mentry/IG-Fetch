@@ -13,7 +13,7 @@ export default function SourceURL({ sourceUrl }: InputProps) {
           className="bg-transparent outline-none cursor-default select-none text-customSm w-[96%]"
           readOnly={true}
         />
-        <div className="h-4 w-4 bg-field-color rounded-full relative mx-1"></div>
+        <div className="h-4 w-4 bg-field-color rounded-full relative mx-1 hover:shadow-lg"></div>
       </div>
     </div>
   );
