@@ -9,6 +9,10 @@
   font-family: "Inter", sans-serif;
 }
 
+html {
+  height: 100vh;
+}
+
 body {
   background: linear-gradient(
     108deg,
