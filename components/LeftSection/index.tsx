@@ -1,8 +1,8 @@
-import Clear from "../../icons/Clear.svg";
-import Paste from "../../icons/Paste.svg";
-import React, { useEffect } from "react";
-
-import Image from "next/image";
+import React from "react";
+import ReelsURL from "./ReelsURL";
+import Save from "./Save";
+import SaveAs from "./SaveAs";
+import DiscordPush from "./DiscordPush";
 
 interface InputProps {
   sourceUrl: string;
@@ -20,38 +20,13 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
 
   return (
     <div className="left-section w-[100%] sm:w-[100%] lg:w-[70%] flex-shrink flex-grow lg:px-32 xl:px-40 2xl:px-60">
-      <div className="box field-color rounded-border-18 mx-0 bg-blue-800 my-6 p-2">
-        <input
-          type="text"
-          id="reels-url-field"
-          placeholder="reels url"
-          className="field no-background no-outline p-2 px-3"
-          value={sourceUrl}
-          onChange={(e) => setSourceUrl(e.target.value)}
-        />
-
-        <Image
-          priority
-          src={Paste}
-          alt="Paste"
-          height={16}
-          title="Paste"
-          id="Paste"
-          role="button"
-          onClick={handlePaste}
-        />
-        <Image
-          priority
-          src={Clear}
-          alt="Clear"
-          height={16}
-          title="Clear"
-          id="Clear"
-          className="mx-3"
-          onClick={handleClear}
-          role="button"
-        />
-      </div>
+      
+      <ReelsURL
+        sourceUrl={sourceUrl}
+        setSourceUrl={setSourceUrl}
+        handleClear={handleClear}
+        handlePaste={handlePaste}
+      />
 
       <div className="box mx-0 my-3" id="fileName">
         <input
@@ -59,33 +34,11 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
           placeholder="name of file"
           className="field rounded-border-18 py-[10px] px-4 outline-none"
         />
-        <button
-          className="button rounded-full mx-2 w-24 hover:shadow text-customSm text-semiTransparentWhite"
-          type="button"
-        >
-          save
-        </button>
-        <button
-          className="button rounded-full w-44 hover:shadow text-customSm text-semiTransparentWhite"
-          type="button"
-        >
-          save as
-        </button>
+        <Save />
+        <SaveAs />
       </div>
 
-      <div className="box mx-0 px-0 my-3">
-        <input
-          type="text"
-          placeholder="discord channel webhook url"
-          className="field rounded-border-18 outline-none py-[10px] px-4"
-        />
-        <button
-          className="button rounded-full ml-2 w-24 hover:shadow text-customSm text-semiTransparentWhite"
-          type="button"
-        >
-          push
-        </button>
-      </div>
+      <DiscordPush />
 
       <div className="box"></div>
     </div>
