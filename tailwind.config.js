@@ -16,6 +16,9 @@ module.exports = {
       fontSize: {
         customSm: ['0.8rem', 'inherit'],
         customBase: ['1rem', 'inherit']
+      },
+      textColor: {
+        semiTransparentWhite: "rgba(0,0,0,0.6)"
       }
     },
   },

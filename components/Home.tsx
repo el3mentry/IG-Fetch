@@ -78,7 +78,10 @@ export default function Home() {
       </div>
 
       <div className="no-background mx-0 my-0 flex-shrink flex-grow">
-        <button className="button rounded-border-18 hover:shadow text-customSm" type="button">
+        <button
+          className="button rounded-border-18 hover:shadow text-customSm text-semiTransparentWhite"
+          type="button"
+        >
           compress video
         </button>
       </div>
