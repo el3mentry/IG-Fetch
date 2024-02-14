@@ -59,10 +59,10 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
           placeholder="name of file"
           className="field rounded-border-18 py-[10px] px-4 outline-none"
         />
-        <button className="button rounded-full mx-2 w-24 hover:shadow" type="button">
+        <button className="button rounded-full mx-2 w-24 hover:shadow text-customSm" type="button">
           save
         </button>
-        <button className="button rounded-full w-44 hover:shadow" type="button">
+        <button className="button rounded-full w-44 hover:shadow text-customSm" type="button">
           save as
         </button>
       </div>
@@ -73,7 +73,7 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
           placeholder="discord channel webhook url"
           className="field rounded-border-18 outline-none py-[10px] px-4"
         />
-        <button className="button rounded-full ml-2 w-24 hover:shadow" type="button">
+        <button className="button rounded-full ml-2 w-24 hover:shadow text-customSm" type="button">
           push
         </button>
       </div>

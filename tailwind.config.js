@@ -13,6 +13,10 @@ module.exports = {
       colors: {
         "field-color": "#ffffff99",
       },
+      fontSize: {
+        customSm: ['0.8rem', 'inherit'],
+        customBase: ['1rem', 'inherit']
+      }
     },
   },
   plugins: [],
