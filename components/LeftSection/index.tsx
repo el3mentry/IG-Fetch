@@ -60,10 +60,10 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
           className="field rounded-border-18 py-[10px] px-4 outline-none"
         />
         <button className="button rounded-full mx-2 w-24 hover:shadow" type="button">
-          Save
+          save
         </button>
         <button className="button rounded-full w-44 hover:shadow" type="button">
-          Save as
+          save as
         </button>
       </div>
 
@@ -74,7 +74,7 @@ export default function LeftSection({ sourceUrl, setSourceUrl }: InputProps) {
           className="field rounded-border-18 outline-none py-[10px] px-4"
         />
         <button className="button rounded-full ml-2 w-24 hover:shadow" type="button">
-          Push
+          push
         </button>
       </div>
 
