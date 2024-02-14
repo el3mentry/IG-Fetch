@@ -2,11 +2,15 @@ import AutoplayToggle from "./AutoplayToggle";
 import PlayableMedia from "./PlayableMedia";
 import SourceURL from "./SourceURL";
 
-export default function RightSection() {
+type InputProps = {
+  scrapedPostUrl: string;
+};
+
+export default function RightSection({ scrapedPostUrl }: InputProps) {
   return (
     <div className="flex flex-row w-[100%] sm:w-[100%] lg:w-[20%] flex-shrink flex-grow">
       <div className="flex flex-col">
-        <SourceURL sourceUrl="abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz" />
+        <SourceURL scrapedPostUrl={scrapedPostUrl} />
         <PlayableMedia />
         {/* <AutoplayToggle /> */}
       </div>

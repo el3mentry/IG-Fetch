@@ -1,15 +1,15 @@
 type InputProps = {
-  sourceUrl: string;
+  scrapedPostUrl: string;
 };
 
-export default function SourceURL({ sourceUrl }: InputProps) {
+export default function SourceURL({ scrapedPostUrl }: InputProps) {
   return (
     <div className="flex flex-col">
       <p className="inline-block text-white m-auto mb-1">source url</p>
 
       <div className="w-11/12 h-7 select-none bg-field-color rounded-full m-auto mb-3 mt-1 flex flex-row pr-1 pl-2 justify-center items-center text-semiTransparentWhite">
         <input
-          value={sourceUrl}
+          value={scrapedPostUrl}
           className="bg-transparent outline-none cursor-default select-none text-customSm w-[96%]"
           readOnly={true}
         />
